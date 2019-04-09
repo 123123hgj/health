@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3584049f-9beb-4d15-b750-28f1fd363fee" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.txt" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -77,20 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/flaskblog/templates/admin/patientlist.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="159">
               <caret line="194" selection-start-line="194" selection-end-line="194" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="3" selection-start-column="3" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -461,7 +453,7 @@
       <workItem from="1554686211962" duration="8629000" />
       <workItem from="1554698690690" duration="24437000" />
       <workItem from="1554778822796" duration="2234000" />
-      <workItem from="1554785979614" duration="835000" />
+      <workItem from="1554785979614" duration="1126000" />
     </task>
     <task id="LOCAL-00001" summary="add test.txt">
       <created>1554786120202</created>
@@ -484,11 +476,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554786475800</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="mod 111 to 3333 in test.txt">
+      <created>1554786951776</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1554786951776</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112801000" />
+    <option name="totallyTimeSpent" value="113092000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -503,7 +502,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26172465" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26172465" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -514,7 +513,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32786885" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.4147541" />
+      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.4147541" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.3295082" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50075644" side_tool="true" weight="0.31751227" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.40819672" />
@@ -559,7 +558,8 @@
     <MESSAGE value="add test.txt" />
     <MESSAGE value="add 111 to test.txt" />
     <MESSAGE value="mod 111 to 222 in test.txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="mod 111 to 222 in test.txt" />
+    <MESSAGE value="mod 111 to 3333 in test.txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="mod 111 to 3333 in test.txt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -844,17 +844,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="4" selection-start-column="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/flaskblog/templates/admin/patientlist.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="159">
           <caret line="194" selection-start-line="194" selection-end-line="194" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="3" selection-start-column="3" selection-end-column="3" />
         </state>
       </provider>
     </entry>
