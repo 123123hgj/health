@@ -1,0 +1,432 @@
+{% from '_macros.html' import static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>SB Admin - Charts</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="{{ static('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+
+  <!-- Page level plugin CSS-->
+  <link href="{{ static('admin/vendor/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="{{ static('admin/css/sb-admin.css') }}" rel="stylesheet">
+  <script src="{{ static('admin/vendor/jquery/jquery.min.js') }}"></script>
+  
+
+
+  <!-- 时间插件 -->
+  <link href="{{ static('admin/assets/theme/css/tempusdominus-bootstrap-4.css') }}" rel="stylesheet">
+  <script type="text/javascript" src="{{ static('admin/js/popper.min.js') }}"></script>
+  <script type="text/javascript" src="{{ static('admin/js/moment-with-locales.min.js') }}"></script>
+  <script type="text/javascript" src="{{ static('admin/js/moment-timezone-with-data-2012-2022.min.js') }}"></script>
+  <script src="{{ static('admin/assets/theme/js/base.js') }}"></script>
+  <script src="{{ static('admin/assets/theme/js/tempusdominus-bootstrap-4.js') }}"></script>
+<!-- 引入 图表ECharts 文件 -->
+  <script src="{{ static('admin/js/echarts.js') }}"></script>
+
+  <style>
+    .clearfix{ clear: both; }
+    .form-control2 {
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+  </style>
+</head>
+
+<body id="page-top" class="sidebar-toggled">
+
+  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+    <a class="navbar-brand mr-1" href="index.html">Start Bootstrap</a>
+
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Navbar Search -->
+    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <!-- Navbar -->
+    <ul class="navbar-nav ml-auto ml-md-0">
+      <li class="nav-item dropdown no-arrow mx-1">
+        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-bell fa-fw"></i>
+          <span class="badge badge-danger">9+</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown no-arrow mx-1">
+        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-envelope fa-fw"></i>
+          <span class="badge badge-danger">7</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user-circle fa-fw"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+          <a class="dropdown-item" href="#">Settings</a>
+          <a class="dropdown-item" href="#">Activity Log</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+        </div>
+      </li>
+    </ul>
+
+  </nav>
+
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="sidebar navbar-nav toggled" >
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Pages</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <h6 class="dropdown-header">Login Screens:</h6>
+          <a class="dropdown-item" href="login.html">Login</a>
+          <a class="dropdown-item" href="register.html">Register</a>
+          <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
+          <div class="dropdown-divider"></div>
+          <h6 class="dropdown-header">Other Pages:</h6>
+          <a class="dropdown-item" href="404.html">404 Page</a>
+          <a class="dropdown-item" href="blank.html">Blank Page</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('admin.patient') }}">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Charts</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('admin.tables') }}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Tables</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('admin.patientlist') }}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>PatientList</span></a>
+      </li>
+    </ul>
+
+    <div id="content-wrapper">
+      <div class="container-fluid">
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">主页</a>
+            </li>
+            <li class="breadcrumb-item active">PatientList</li>
+          </ol>
+
+
+        
+
+        <div class="row">
+            {#<div class="col-sm-12">
+              <h2>Custom Icons</h2>
+              <div id="treeview5" class=""></div>
+            </div>#}
+            <div class="clearfix" style="margin: 10px; width: 100%;"></div>
+            <div class="col-sm-12">
+                <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                <div id="main" style="width: 100%;height:350px;"></div>
+            </div>
+            <div class="col-sm-12">
+                <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                <div id="main2" style="width: 100%;height:350px;"></div>
+            </div>
+        </div>
+
+
+
+          <script>
+              console.log({{ syms | arr | tojson }})
+          </script>
+
+
+        <script src="{{ static('admin/js/bootstrap-treeview.js') }}"></script>
+        {#<script type="text/javascript">
+          var defaultData = [
+          {
+            text: '2019-04-03',
+            href: '#parent1',
+            tags: ['4'],
+            nodes: [
+              {
+                text: 'Child 1',
+                href: '#child1',
+                tags: ['2'],
+                nodes: [
+                  {
+                    text: 'Grandchild 1',
+                    href: '#grandchild1',
+                    tags: ['0']
+                  },
+                  {
+                    text: 'Grandchild 2',
+                    href: '#grandchild2',
+                    tags: ['0']
+                  }
+                ]
+              },
+              {
+                text: 'Child 2',
+                href: '#child2',
+                tags: ['0']
+              }
+            ]
+          },
+          {
+            text: 'Parent 2',
+            href: '#parent2',
+            tags: ['0']
+          },
+          {
+            text: 'Parent 3',
+            href: '#parent3',
+             tags: ['0']
+          },
+          {
+            text: 'Parent 4',
+            href: '#parent4',
+            tags: ['0']
+          },
+          {
+            text: 'Parent 5',
+            href: '#parent5'  ,
+            tags: ['0']
+          }
+        ];
+
+        
+          $('#treeview5').treeview({
+            color: "#428bca",
+            expandIcon: 'glyphicon glyphicon-chevron-right',
+            collapseIcon: 'glyphicon glyphicon-chevron-down',
+            nodeIcon: 'glyphicon glyphicon-bookmark',
+            data: defaultData
+          });
+
+        </script>#}
+
+        <script type="text/javascript">
+            option = {
+                title: {
+                    text: 'pain程度变化',
+                    subtext: '部位'
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data:['pain']
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+
+                        dataView: {readOnly: false},
+                       {# magicType: {type: ['line', 'bar']},#}
+                        restore: {},
+                        saveAsImage: {}
+                    }
+                },
+                xAxis:  {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['周一早','周一中','周一下','周一晚','周二早','周二中','周二下','周二晚','周三','周四','周五','周六','周日']
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLabel: {
+                        formatter: '{value}'
+                    }
+                },
+                series: [
+                    {
+                        name:'pain',
+                        type:'line',
+                        data:[1, 3, 5, 3, 1, 3, 5, 10, 0, 10,1, 3, 5,],
+                        markPoint: {
+                            data: [
+
+                                {value : 'arm', xAxis: 0, yAxis: 1},
+                                {value : 'head', xAxis: 1, yAxis: 3},
+                            ]
+                        },
+                        markLine: {
+                            data: [
+                                {type: 'average', name: '平均值' , }
+                            ]
+                        }
+                    }
+                ]
+            };
+            var myChart = echarts.init(document.getElementById('main'));
+            myChart.setOption(option);
+
+            option = {
+                title: {
+                    text: '病状程度变化',
+                    subtext: '部位'
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data:['疼痛部位2']
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+
+                        dataView: {readOnly: false},
+                       {# magicType: {type: ['line', 'bar']},#}
+                        restore: {},
+                        saveAsImage: {}
+                    }
+                },
+                xAxis:  {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['周一早','周一中','周一下','周一晚','周二早','周二中','周二下','周二晚','周三','周四','周五','周六','周日']
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLabel: {
+                        formatter: '{value}'
+                    }
+                },
+                series: [
+                    {
+                        name:'疼痛部位2',
+                        type:'line',
+                        data:[1, 3, 5, 3, 1, 3, 5, 10, 0, 10,1, 3, 5,],
+                        markPoint: {
+                            data: [
+                                {type: 'max', name: '最大值'},
+                                {type: 'min', name: '最小值'}
+                            ]
+                        },
+                        markLine: {
+                            data: [
+                                {type: 'average', name: '平均值'}
+                            ]
+                        }
+                    }
+                ]
+            };
+            var myChart = echarts.init(document.getElementById('main2'));
+            myChart.setOption(option);
+
+        </script>
+
+
+      <!-- Sticky Footer -->
+      <footer class="sticky-footer">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright © Your Website 2019</span>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+    <!-- /.content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="{{ url_for('front.logout') }}">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  
+  <script src="{{ static('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{{ static('admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+
+  <!-- Custom scripts for all pages-->
+  <script src="{{ static('admin/js/sb-admin.min.js') }}"></script>
+</div>
+
+</body>
+
+</html>
